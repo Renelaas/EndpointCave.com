@@ -158,7 +158,7 @@ $buttonSetPIN_Click = {
 	}
 
 	if ($textboxNewPin.Text -eq $textboxRetypedPin.Text) {
-		if ($(Test-IncrementNumber -NumberString $textboxNewPin.Text) -or $(Test-DecrementNumber -NumberString $textboxNewPin.Text)) {
+		if ($(Test-IncrementNumber -NumberString $textboxNewPin.Text) -or $(Test-DecrementNumber -NumberString $textboxNewPin.Text) -or $(Test-Number -NumberString $textboxNewPin.Text)) {
 			$labelPINIsNotEqual.ForeColor = 'Red'
 			$labelPINIsNotEqual.Text = $language.$uiLang.PinIsTooSimple #"PIN is too simple"
 			$labelPINIsNotEqual.Visible = $true
@@ -1908,7 +1908,7 @@ $timespan = new-timespan -days 1
 if (((get-date) - $lastWrite) -ge $timespan)
 {
 Write-Output "BitLockerRunning.txt is created more than 1 day ago, deleting file and waiting for next cycle."
-Remove-Item -Path $PSScriptRoot\BitLockerRunning.txt -ForceRemove-Item -Path $PSScriptRoot\BitLockerRunning.txt -Force
+Remove-Item -Path $PSScriptRoot\BitLockerRunning.txt -Force
 
 }
 else
